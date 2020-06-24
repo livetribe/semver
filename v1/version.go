@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package semver // import "l7e.io/semver/v2"
+package semver
 
 import (
 	"errors"

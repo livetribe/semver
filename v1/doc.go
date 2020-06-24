@@ -17,4 +17,4 @@
 /*
 Package semver provides a signal watcher that can be used to shutdown an application.
 */
-package semver
+package semver // import "l7e.io/semver/v2"
