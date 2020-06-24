@@ -32,34 +32,6 @@ func TestSpecVersion(t *testing.T) {
 	})
 }
 
-func TestVersionString(t *testing.T) {
-	Convey("Test VersionString semantics", t, func() {
-		Convey("Invalid version strings should panic when converted to a Version", func() {
-			invalid := semver.VersionString("How now brown cow")
-			So(func() {
-				invalid.Version()
-			}, ShouldPanic)
-		})
-
-		Convey("Calls with no errors should not panic", func() {
-			s := "1.2.3-alpha.1+build.001"
-			vs := semver.VersionString(s)
-			v := vs.Version()
-			So(v, ShouldResemble, semver.New(s))
-			So(v.String(), ShouldEqual, s)
-		})
-
-		Convey("Round trip test", func() {
-			s := "1.2.3-alpha.1+build.001"
-			vs := semver.VersionString(s)
-			v := vs.Version()
-			So(v, ShouldResemble, semver.New(s))
-			So(v.String(), ShouldEqual, s)
-			So(v.VersionString(), ShouldEqual, vs)
-		})
-	})
-}
-
 func TestMust(t *testing.T) {
 	Convey("Test construction with Must()", t, func() {
 		Convey("Calls with errors should panic", func() {

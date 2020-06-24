@@ -39,17 +39,9 @@ type Version struct {
 	Metadata   Identifiers
 }
 
-// VersionString is a string that represents a version that adheres to the Semantic Versioning specification.
-type VersionString string
-
 // SpecVersion is the latest fully supported spec version of semver.
 func SpecVersion() *Version {
 	return &Version{2, 0, 0, Identifiers{}, Identifiers{}}
-}
-
-// Version returns an instance of Version equivalent to the version string.
-func (vs VersionString) Version() *Version {
-	return New(string(vs))
 }
 
 // New parses expected to create an instance of Version.
@@ -232,11 +224,6 @@ func (v *Version) String() string {
 	}
 
 	return string(b)
-}
-
-// VersionString returns an equivalent VersionString.
-func (v *Version) VersionString() VersionString {
-	return VersionString(v.String())
 }
 
 // Clone returns a cloned copy.
