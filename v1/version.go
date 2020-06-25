@@ -195,6 +195,11 @@ func (v *Version) CompatibleUnder(o *Version) bool {
 	return true
 }
 
+// IsPreRelease returns true if the version is pre-release version, false otherwise.
+func (v *Version) IsPreRelease() bool {
+	return len(v.PreRelease) != 0
+}
+
 func (v *Version) String() string {
 	b := make([]byte, 0, 5)
 	b = strconv.AppendUint(b, v.Major, 10)

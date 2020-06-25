@@ -233,6 +233,14 @@ func TestCompatibleUnder(t *testing.T) {
 	})
 }
 
+func TestVersion_IsPreRelease(t *testing.T) {
+	Convey("Test IsPreRelease", t, func() {
+		So(semver.New("1.2.3-alpha.0+build.012").IsPreRelease(), ShouldBeTrue)
+		So(semver.New("1.2.3+build.012").IsPreRelease(), ShouldBeFalse)
+		So((&semver.Version{Major: 1}).IsPreRelease(), ShouldBeFalse) // PreRelease is nil
+	})
+}
+
 func TestClone(t *testing.T) {
 	Convey("Test Clone()", t, func() {
 		v := semver.New("1.2.3-alpha.1+build.012")
